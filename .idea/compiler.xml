@@ -7,9 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="MockMock" />
+        <module name="mailrobot" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="mailrobot" target="1.5" />
       <module name="MockMock" target="1.7" />
     </bytecodeTargetLevel>
   </component>

@@ -4,6 +4,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/MockMock/pom.xml" />
+        <option value="$PROJECT_DIR$/mailrobot/pom.xml" />
       </list>
     </option>
   </component>
