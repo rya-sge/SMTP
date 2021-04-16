@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="mailrobot" target="1.5" />
+      <module name="mailrobot" target="11" />
       <module name="MockMock" target="1.7" />
     </bytecodeTargetLevel>
   </component>
