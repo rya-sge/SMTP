@@ -28,7 +28,7 @@ public class SmtpClient implements iSmtpClient {
             try {
                 Socket socket = new Socket(smtpServerAddrese, smtpServerPort);
 
-                writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"), true);
+                writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"), true);
                 reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
                 String line = reader.readLine();
                 LOG.info(line);
@@ -38,8 +38,14 @@ public class SmtpClient implements iSmtpClient {
                 line = reader.readLine(); //Récupérer réponse serveur
                 LOG.info(line);
                 if(!line.startsWith("250")) {
-
+                    throw new IOException("SMTP error: " + line);
                 }
+                //Récupérer info envoyé par le serveur
+                while(line.startsWith("250-")){
+                    line = reader.readLine();
+                    LOG.info(line);
+                }
+
 
                 //MAIL FROM
                 writer.write("MAIL FROM:" + message.getFrom());
@@ -54,8 +60,7 @@ public class SmtpClient implements iSmtpClient {
                 //Partie To
                 Iterator i = message.getTo().iterator();
                 while(i.hasNext()) {
-                    writer.write("RCPT TO:");
-                    writer.write((char[]) i.next());
+                    writer.write("RCPT TO:" + i.next());
                     writer.write(sautLigne);
                     writer.flush();
                     line = reader.readLine();
@@ -67,11 +72,51 @@ public class SmtpClient implements iSmtpClient {
                 //Partie CC
                 i = message.getCc().iterator();
                 while(i.hasNext()) {
-                    writer.write("Cc: " + i.next());
+                    writer.write("RCPT TO:" + i.next());
+                    writer.write(sautLigne);
+                    writer.flush();
+                    line = reader.readLine();
+                    LOG.info(line);
                 }
 
                 writer.write(sautLigne);
                 writer.flush();
+
+                //partie BCC
+                i = message.getBcc().iterator();
+                while(i.hasNext()) {
+                    writer.write("RCPT TO:" + i.next());
+                    writer.write(sautLigne);
+                    writer.flush();
+                    line = reader.readLine();
+                    LOG.info(line);
+                }
+                //writer.write(sautLigne);
+               // writer.flush();
+                writer.write("DATA");
+                writer.write(sautLigne);
+                writer.flush();
+                line = reader.readLine();
+                LOG.info(line);
+                writer.write("Content-type: text/plain; charset=\"utf-8\"\r\n");
+                writer.write("From : " + message.getFrom() + sautLigne);
+
+                //writer.write("to: " + message.getTo());
+                i = message.getTo().iterator();
+
+                //Première ligne sans la virgule
+                writer.write("To: " + message.getTo());
+                while(i.hasNext()) {
+                    writer.write(", " + "To: "  + message.getTo());
+                }
+                writer.write(sautLigne);
+
+                //Première ligne sans la virgule
+                writer.write("Cc: " + message.getCc());
+                while(i.hasNext()) {
+                    writer.write(", " + "Cc: "  + message.getTo());
+                }
+                writer.write(sautLigne);
 
                 //Partie body
                 LOG.info(message.getBody());
