@@ -22,6 +22,7 @@ public class ConfigManager  implements IConfigManager{
     public ConfigManager() throws IOException {
         victims = loadPersonsFromFile("./config/victims.json");
         messages = loadMessagesFromFile("./config/messages.json");
+        loadConfig();
     }
 
     private List<Person> loadPersonsFromFile(String fileName) throws IOException {
@@ -29,12 +30,13 @@ public class ConfigManager  implements IConfigManager{
     //JSON parser object pour lire le fichier
         JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader("..../config/" +fileName)) {
+        try (FileReader reader = new FileReader("../../config/" +fileName)) {
 
         // lecture du fichier
         Object obj = jsonParser.parse(reader);
+        JSONArray victimes = (JSONArray)obj;
 
-        JSONArray personne = (JSONArray) obj;
+        JSONArray personne = (JSONArray) victimes;
 
         // parcours du tableau de personnes
         personne.forEach(pers->
@@ -61,7 +63,7 @@ private List<String> loadMessagesFromFile(String fileName)
     //JSON parser object pour lire le fichier
     JSONParser jsonParser = new JSONParser();
 
-    try (FileReader reader = new FileReader("..../config/" +fileName)) {
+    try (FileReader reader = new FileReader("../../config/" +fileName)) {
 
         // lecture du fichier
         Object obj = jsonParser.parse(reader);
@@ -110,6 +112,33 @@ private List<String> loadMessagesFromFile(String fileName)
 
         // afficher le contenu
         return new Person(nom, email, prenom);
+    }
+
+    private static void loadConfig(String fileName){
+        List<String> result = new ArrayList<>();
+        //JSON parser object pour lire le fichier
+        JSONParser jsonParser = new JSONParser();
+
+        try (FileReader reader = new FileReader("../../config/" +fileName)) {
+
+            // lecture du fichier
+            Object obj = jsonParser.parse(reader);
+            JSONArray config = (JSONArray) obj;
+            String
+
+
+            // parcours du tableau de personnes
+
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<Person> getVictims()
