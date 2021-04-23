@@ -1,14 +1,15 @@
 package config;
 
-import mail.Person;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import mail.Person;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ConfigManager  implements IConfigManager{
@@ -29,7 +30,7 @@ public class ConfigManager  implements IConfigManager{
     //JSON parser object pour lire le fichier
         JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader("..../config/" +fileName)) {
+        try (FileReader reader = new FileReader("../../config/" +fileName)) {
 
         // lecture du fichier
         Object obj = jsonParser.parse(reader);

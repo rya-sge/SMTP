@@ -12,6 +12,10 @@ public class Group {
         this.nom = nom;
     }
 
+    public Group() {
+
+    }
+
     public void ajouterMembre(Person p) {
         persons.add(p);
     }
@@ -19,5 +23,6 @@ public class Group {
     public ArrayList<Person> getPersons() {
         return new ArrayList<Person>(persons);
     }
+
 
 }

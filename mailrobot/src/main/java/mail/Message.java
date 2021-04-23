@@ -1,27 +1,41 @@
 package mail;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Message {
     private String from;
 
-    public LinkedList<String> getTo() {
+    public ArrayList<String> getTo() {
         return to;
     }
 
-    public LinkedList<String> getCc() {
+    public ArrayList<String> getCc() {
         return cc;
     }
 
-    public LinkedList<String> getBcc() {
+    public ArrayList<String> getBcc() {
         return bcc;
     }
 
-    private LinkedList<String> to = new LinkedList();
-    private LinkedList<String> cc = new LinkedList();
-    private LinkedList<String> bcc = new LinkedList();
+    public void setCc(ArrayList<String> cc) {
+        System.arraycopy(cc, 0, this.cc, 0, cc.size());
+    }
+
+    public void setTo(ArrayList<String> to) {
+        System.arraycopy(to, 0, this.to, 0, to.size());
+    }
+
+    private ArrayList<String> to = new ArrayList();
+    private ArrayList<String> cc = new ArrayList();
+    private ArrayList<String> bcc = new ArrayList();
     private String subject;
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
     private String body;
     public String getSubject() {
         return subject;
