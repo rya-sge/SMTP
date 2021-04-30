@@ -35,7 +35,7 @@ public class Group {
      * @return
      */
     public List<Person> getPersons() {
-        return new ArrayList<Person>(persons);
+        return new ArrayList<>(persons);
     }
 
 
