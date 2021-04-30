@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MockMock/MockMock.iml" filepath="$PROJECT_DIR$/MockMock/MockMock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mailrobot/MockMock (1).iml" filepath="$PROJECT_DIR$/mailrobot/MockMock (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/MockMock/MockMock (2).iml" filepath="$PROJECT_DIR$/MockMock/MockMock (2).iml" />
       <module fileurl="file://$PROJECT_DIR$/mailrobot/mailrobot.iml" filepath="$PROJECT_DIR$/mailrobot/mailrobot.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/smtp.iml" filepath="$PROJECT_DIR$/.idea/smtp.iml" />
     </modules>

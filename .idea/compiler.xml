@@ -6,13 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="MockMock (2)" />
         <module name="MockMock" />
         <module name="mailrobot" />
+        <module name="MockMock (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="mailrobot" target="11" />
       <module name="MockMock" target="1.7" />
+      <module name="MockMock (1)" target="1.7" />
+      <module name="MockMock (2)" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
