@@ -8,8 +8,6 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +21,9 @@ public class ConfigManager  implements IConfigManager{
     private List<Person> witnesses;
 
     public ConfigManager()  {
-        victims = loadPersonsFromFile("./mailrobot/src/main/config/victims.json");
-        messages = loadMessagesFromFile("./mailrobot/src/main/config/messages.json");
-        loadConfig("./mailrobot/src/main/config/config.json");
+        victims = loadPersonsFromFile("./src/main/config/victims.json");
+        messages = loadMessagesFromFile("./src/main/config/messages.json");
+        loadConfig("./src/main/config/config.json");
     }
 
     /**
