@@ -25,7 +25,7 @@ public class PrankGenerator {
             int messageIndex = 0;
 
             int nombreGroupes = 0;//Voir avec Viotti
-            int nombreDeVictims = 0; //Voir avec Nico
+            int nombreDeVictims = configurationManager.getVictims().size(); //Voir avec Nico
 
             if(nombreDeVictims / nombreGroupes < 3){
                 LOG.warning("Vous êtes trop gentis. Il n'y a pas assez de victimes");
@@ -37,7 +37,7 @@ public class PrankGenerator {
                 Collections.shuffle(victims);
                 Person sender = victims.remove(0);
                 prank.setVictimSender(sender);
-                prank.addVictimeRecipients(victims);
+                prank.addVictimRecipients(victims);
 
                 prank.addWitnessRecipients(victims);
 

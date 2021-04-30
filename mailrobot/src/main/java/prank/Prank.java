@@ -10,7 +10,7 @@ import java.util.List;
 public class Prank {
 
     private Person victimSender;
-    private final ArrayList<Person> victimeRecipients = new ArrayList<>();
+    private final ArrayList<Person> victimRecipients = new ArrayList<>();
     private final ArrayList<Person> witnessRecipients = new ArrayList<>();
     private String message;
 
@@ -35,11 +35,11 @@ public class Prank {
         return victimSender;
     }
 
-    public ArrayList<Person> getVictimeRecipients() {
-        return victimeRecipients;
+    public ArrayList<Person> getVictimRecipients() {
+        return victimRecipients;
     }
 
-    public List<Person> getWitnessRecipients() {
+    public ArrayList<Person> getWitnessRecipients() {
         return witnessRecipients;
     }
 
@@ -47,11 +47,11 @@ public class Prank {
         return message;
     }
 
-    public Message generateMailmessage(){
+    public Message generateMailMessage(){
         Message msg = new Message();
 
         msg.setBody(this.message + "\r\n" +  victimSender.getNom());
-        Iterator i = victimeRecipients.iterator();
+        Iterator i = victimRecipients.iterator();
         ArrayList<String> b = new ArrayList();
         while(i.hasNext()){
             b.add((String) i.next());
@@ -61,8 +61,8 @@ public class Prank {
     }
 
 
-    public void addVictimeRecipients(List<Person> victims) {
-        System.arraycopy(this.victimeRecipients,this.victimeRecipients.size(), victims,0, victims.size());
+    public void addVictimRecipients(List<Person> victims) {
+        System.arraycopy(this.victimRecipients,this.victimRecipients.size(), victims,0, victims.size());
     }
 
     public void addWitnessRecipients(List<Person> witnesses) {

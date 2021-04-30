@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
-public class SmtpClient implements iSmtpClient {
+public class SmtpClient implements ISmtpClient {
     private static final Logger LOG = Logger.getLogger(SmtpClient.class.getName());
     private String smtpServerAddrese;
     private int smtpServerPort = 25;
