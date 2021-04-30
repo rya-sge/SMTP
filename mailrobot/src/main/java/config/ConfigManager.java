@@ -23,6 +23,7 @@ public class ConfigManager  implements IConfigManager{
     public ConfigManager() throws IOException {
         victims = loadPersonsFromFile("./config/victims.json");
         messages = loadMessagesFromFile("./config/messages.json");
+        loadConfig("./config/config.json");
     }
 
     private List<Person> loadPersonsFromFile(String fileName) throws IOException {
@@ -34,8 +35,9 @@ public class ConfigManager  implements IConfigManager{
 
         // lecture du fichier
         Object obj = jsonParser.parse(reader);
+        JSONArray victimes = (JSONArray)obj;
 
-        JSONArray personne = (JSONArray) obj;
+        JSONArray personne = (JSONArray) victimes;
 
         // parcours du tableau de personnes
         personne.forEach(pers->
@@ -62,7 +64,7 @@ private List<String> loadMessagesFromFile(String fileName)
     //JSON parser object pour lire le fichier
     JSONParser jsonParser = new JSONParser();
 
-    try (FileReader reader = new FileReader("..../config/" +fileName)) {
+    try (FileReader reader = new FileReader("../../config/" +fileName)) {
 
         // lecture du fichier
         Object obj = jsonParser.parse(reader);
@@ -113,6 +115,39 @@ private List<String> loadMessagesFromFile(String fileName)
         return new Person(nom, email, prenom);
     }
 
+    private void loadConfig(String fileName){
+        List<String> result = new ArrayList<>();
+        //JSON parser object pour lire le fichier
+        JSONParser jsonParser = new JSONParser();
+
+        try (FileReader reader = new FileReader("../../config/" +fileName)) {
+
+            // lecture du fichier
+            Object obj = jsonParser.parse(reader);
+            JSONObject config = (JSONObject) obj;
+            this.smtpServerAddress = (String) config.get("smtpServerAddress");
+            this.stmpServerPort = (int) config.get("smtpServerPort");
+            this.numberOfGroups = (int) config.get("numberOfGroups");
+            this.witnesses = new ArrayList<>();
+            String witnesses = (String) config.get("witnessesToCC");
+            String[] witnessesAdresses = witnesses.split(",");
+            for(String adresse : witnessesAdresses)
+            {
+                this.witnesses.add(new Person(adresse));
+            }
+
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
     public List<Person> getVictims()
     {
         return victims;
@@ -123,5 +158,18 @@ private List<String> loadMessagesFromFile(String fileName)
     {
         return messages;
     }
+
+    @Override
+    public List<Person> getWitnesses()
+    {
+        return witnesses;
+    }
+
+    @Override
+    public int getNumberOfGroups()
+    {
+        return numberOfGroups;
+    }
+
 
 }
