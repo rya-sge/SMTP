@@ -3,6 +3,6 @@ package smtp;
 
 import mail.Message;
 
-public interface iSmtpClient {
+public interface ISmtpClient {
     public void sendMessage(Message message);
 }

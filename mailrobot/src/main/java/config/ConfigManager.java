@@ -1,14 +1,15 @@
 package config;
 
-import mail.Person;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import mail.Person;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ConfigManager  implements IConfigManager{
