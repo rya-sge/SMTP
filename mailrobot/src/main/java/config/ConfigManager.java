@@ -8,6 +8,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +22,10 @@ public class ConfigManager  implements IConfigManager{
     private int numberOfGroups;
     private List<Person> witnesses;
 
-    public ConfigManager() throws IOException {
-        victims = loadPersonsFromFile("./config/victims.json");
-        messages = loadMessagesFromFile("./config/messages.json");
-        loadConfig("./config/config.json");
+    public ConfigManager()  {
+        victims = loadPersonsFromFile("./mailrobot/src/main/config/victims.json");
+        messages = loadMessagesFromFile("./mailrobot/src/main/config/messages.json");
+        loadConfig("./mailrobot/src/main/config/config.json");
     }
 
     /**
@@ -32,12 +34,12 @@ public class ConfigManager  implements IConfigManager{
      * @return
      * @throws IOException
      */
-    private List<Person> loadPersonsFromFile(String fileName) throws IOException {
+    private List<Person> loadPersonsFromFile(String fileName) {
         List<Person> result = new ArrayList<>();
     //JSON parser object pour lire le fichier
         JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader("../../config/" +fileName)) {
+        try (FileReader reader = new FileReader(fileName)) {
 
         // lecture du fichier
         Object obj = jsonParser.parse(reader);
@@ -75,7 +77,7 @@ public class ConfigManager  implements IConfigManager{
     //JSON parser object pour lire le fichier
     JSONParser jsonParser = new JSONParser();
 
-    try (FileReader reader = new FileReader("../../config/" +fileName)) {
+    try (FileReader reader = new FileReader(fileName)) {
 
         // lecture du fichier
         Object obj = jsonParser.parse(reader);
@@ -109,7 +111,8 @@ public class ConfigManager  implements IConfigManager{
     private static String parseMessageObject(JSONObject mess) {
 
         // Obtenir l'objet personne dans la liste
-        JSONObject messObject = (JSONObject) mess.get("message");
+        JSONObject messObject = (JSONObject) mess.get("messages");
+        messObject = (JSONObject) messObject.get("message");
 
         // obtenir les détails ...
         String text    = (String) messObject.get("text");
@@ -126,8 +129,8 @@ public class ConfigManager  implements IConfigManager{
     private static Person parsePersonneObject(JSONObject pers) {
 
         // Obtenir l'objet personne dans la liste
-        JSONObject persObject = (JSONObject) pers.get("personne");
-
+        JSONObject persObject = (JSONObject) pers.get("victimes");
+        persObject = (JSONObject) persObject.get("personne");
         // obtenir les détails ...
         String nom    = (String) persObject.get("nom");
         String prenom = (String) persObject.get("prenom");
@@ -146,7 +149,7 @@ public class ConfigManager  implements IConfigManager{
         //JSON parser object pour lire le fichier
         JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader("../../config/" +fileName)) {
+        try (FileReader reader = new FileReader(fileName)) {
 
             // lecture du fichier
             Object obj = jsonParser.parse(reader);
