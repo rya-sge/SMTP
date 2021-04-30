@@ -151,12 +151,14 @@ public class ConfigManager  implements IConfigManager{
 
             // lecture du fichier
             Object obj = jsonParser.parse(reader);
-            JSONObject config = (JSONObject) obj;
-            this.smtpServerAddress = (String) config.get("smtpServerAddress");
-            this.stmpServerPort = (int) config.get("smtpServerPort");
-            this.numberOfGroups = (int) config.get("numberOfGroups");
+            JSONArray config = (JSONArray) obj;
+            JSONObject configObjet = (JSONObject) config.get(0);
+            configObjet = (JSONObject)configObjet.get("config");
+            this.smtpServerAddress = (String) configObjet.get("smtpServerAddress");
+            this.stmpServerPort = Integer.parseInt((String)configObjet.get("smtpServerPort"));
+            this.numberOfGroups = Integer.parseInt((String)configObjet.get("numberOfGroups"));
             this.witnesses = new ArrayList<>();
-            String witnesses = (String) config.get("witnessesToCC");
+            String witnesses = (String) configObjet.get("witnessesToCC");
             String[] witnessesAdresses = witnesses.split(",");
             for(String adresse : witnessesAdresses)
             {
