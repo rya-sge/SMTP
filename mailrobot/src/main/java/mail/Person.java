@@ -12,6 +12,12 @@ public class Person{
         this.prenom = prenom;
     }
 
+    public Person(String email)
+    {
+        //Vérifier adresse mail valide?
+        this.email = email;
+    }
+
     public String getNom() {
         return nom;
     }
