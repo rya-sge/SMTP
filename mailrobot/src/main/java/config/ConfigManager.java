@@ -197,5 +197,13 @@ public class ConfigManager  implements IConfigManager{
         return numberOfGroups;
     }
 
+    @Override
+    public String getSmtpServerAddress() {
+        return this.smtpServerAddress;
+    }
 
+    @Override
+    public int getSmtpServerPort() {
+        return this.stmpServerPort;
+    }
 }
