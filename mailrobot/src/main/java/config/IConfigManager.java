@@ -9,4 +9,6 @@ public interface IConfigManager {
     public List<String> getMessages();
     public List<Person> getWitnesses();
     public int getNumberOfGroups();
+    public String getSmtpServerAddress();
+    public int getSmtpServerPort();
 }
