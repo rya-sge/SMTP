@@ -14,10 +14,18 @@ public class PrankGenerator {
     private static final Logger LOG = Logger.getLogger(PrankGenerator.class.getName());
     private IConfigManager configurationManager;
 
+    /**
+     *
+     * @param configurationManager
+     */
     public PrankGenerator(IConfigManager configurationManager) {
         this.configurationManager = configurationManager;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Prank> generatePrank(){
             List<Prank>pranks = new ArrayList<>();
 
@@ -50,6 +58,12 @@ public class PrankGenerator {
             return pranks;
     }
 
+    /**
+     *
+     * @param victims
+     * @param numberOfGroups
+     * @return
+     */
     public List<Group> generateGroups(List<Person> victims, int numberOfGroups){
         List<Person> availableVictims = new ArrayList(victims);
         Collections.shuffle(availableVictims);
@@ -64,7 +78,7 @@ public class PrankGenerator {
             targetGroup = groups.get(turn);
             turn = (turn + 1) % groups.size();
             Person victim = availableVictims.remove(0);
-            targetGroup.ajouterMembre(victim);
+            targetGroup.addMember(victim);
         }
         return groups;
     }

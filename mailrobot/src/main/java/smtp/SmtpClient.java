@@ -16,11 +16,22 @@ public class SmtpClient implements ISmtpClient {
     private Socket socket;
     private PrintWriter writer;
     private BufferedReader reader;
-    private String sautLigne = "\r\n";
+    private final String sautLigne = "\r\n";
+
+    /**
+     *
+     * @param smtpServerAdresse
+     * @param port
+     */
     public SmtpClient(String smtpServerAdresse, int port) {
         this.smtpServerAddrese = smtpServerAdresse;
         this.smtpServerPort = port;
     }
+
+    /**
+     *
+     * @param message
+     */
     @Override
     public void sendMessage(Message message) {
             LOG.info("Sending message via SMTP");

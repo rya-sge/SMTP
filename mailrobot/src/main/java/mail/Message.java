@@ -6,50 +6,91 @@ import java.util.List;
 
 public class Message {
     private String from;
+    private String body;
+    private String subject;
 
-    public ArrayList<String> getTo() {
+    private List<String> to = new ArrayList();
+    private List<String> cc = new ArrayList();
+    private List<String> bcc = new ArrayList();
+
+    /**
+     *
+     * @return
+     */
+    public List<String> getTo() {
         return to;
     }
 
-    public ArrayList<String> getCc() {
+    /**
+     *
+     * @return
+     */
+    public List<String> getCc() {
         return cc;
     }
 
-    public ArrayList<String> getBcc() {
+    /**
+     *
+     * @return
+     */
+    public List<String> getBcc() {
         return bcc;
     }
 
-    public void setCc(ArrayList<String> cc) {
+    /**
+     *
+     * @param cc
+     */
+    public void setCc(List<String> cc) {
         System.arraycopy(cc, 0, this.cc, 0, cc.size());
     }
 
-    public void setTo(ArrayList<String> to) {
+    /**
+     *
+     * @param to
+     */
+    public void setTo(List<String> to) {
         System.arraycopy(to, 0, this.to, 0, to.size());
     }
 
-    private ArrayList<String> to = new ArrayList();
-    private ArrayList<String> cc = new ArrayList();
-    private ArrayList<String> bcc = new ArrayList();
-    private String subject;
 
+    /**
+     *
+     * @param body
+     */
     public void setBody(String body) {
         this.body = body;
     }
 
-    private String body;
+    /**
+     *
+     * @return
+     */
     public String getSubject() {
         return subject;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBody() {
         return body;
     }
 
 
-
+    /**
+     *
+     * @return
+     */
     public String getFrom(){
         return from;
     }
+
+    /**
+     *
+     * @param from
+     */
     public void setFrom(String from){
         this.from = from;
     }
