@@ -5,8 +5,8 @@ import mail.Person;
 import java.util.List;
 
 public interface IConfigManager {
-    public abstract List<Person> getVictims();
-    public abstract List<String> getMessages();
-    public abstract List<Person> getWitnesses();
-    public abstract int getNumberOfGroups();
+    public List<Person> getVictims();
+    public List<String> getMessages();
+    public List<Person> getWitnesses();
+    public int getNumberOfGroups();
 }

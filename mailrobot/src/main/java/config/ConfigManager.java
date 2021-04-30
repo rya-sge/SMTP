@@ -26,6 +26,12 @@ public class ConfigManager  implements IConfigManager{
         loadConfig("./config/config.json");
     }
 
+    /**
+     *
+     * @param fileName
+     * @return
+     * @throws IOException
+     */
     private List<Person> loadPersonsFromFile(String fileName) throws IOException {
         List<Person> result = new ArrayList<>();
     //JSON parser object pour lire le fichier
@@ -58,7 +64,12 @@ public class ConfigManager  implements IConfigManager{
     return result;
 }
 
-private List<String> loadMessagesFromFile(String fileName)
+    /**
+     *
+     * @param fileName
+     * @return
+     */
+    private List<String> loadMessagesFromFile(String fileName)
 {
     List<String> result = new ArrayList<>();
     //JSON parser object pour lire le fichier
@@ -89,6 +100,12 @@ private List<String> loadMessagesFromFile(String fileName)
 
     return result;
 }
+
+    /**
+     *
+     * @param mess
+     * @return
+     */
     private static String parseMessageObject(JSONObject mess) {
 
         // Obtenir l'objet personne dans la liste
@@ -101,6 +118,11 @@ private List<String> loadMessagesFromFile(String fileName)
         return text;
     }
 
+    /**
+     *
+     * @param pers
+     * @return
+     */
     private static Person parsePersonneObject(JSONObject pers) {
 
         // Obtenir l'objet personne dans la liste
@@ -115,6 +137,10 @@ private List<String> loadMessagesFromFile(String fileName)
         return new Person(nom, email, prenom);
     }
 
+    /**
+     *
+     * @param fileName
+     */
     private void loadConfig(String fileName){
         List<String> result = new ArrayList<>();
         //JSON parser object pour lire le fichier
