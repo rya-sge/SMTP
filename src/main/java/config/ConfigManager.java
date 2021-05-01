@@ -155,6 +155,8 @@ public class ConfigManager  implements IConfigManager{
             this.smtpServerAddress = (String) configObjet.get("smtpServerAddress");
             this.stmpServerPort = Integer.parseInt((String)configObjet.get("smtpServerPort"));
             this.numberOfGroups = Integer.parseInt((String)configObjet.get("numberOfGroups"));
+            if(this.numberOfGroups == 0)
+                throw new IllegalArgumentException("The group number must be set");
             this.witnesses = new ArrayList<>();
             String witnesses = (String) configObjet.get("witnessesToCC");
             String[] witnessesAdresses = witnesses.split(",");

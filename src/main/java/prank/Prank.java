@@ -103,7 +103,7 @@ public class Prank {
      * @param victims
      */
     public void addVictimRecipients(List<Person> victims) {
-        System.arraycopy(this.victimRecipients,this.victimRecipients.size(), victims,0, victims.size());
+        this.victimRecipients.addAll(victims);
     }
 
     /**
@@ -111,6 +111,6 @@ public class Prank {
      * @param witnesses
      */
     public void addWitnessRecipients(List<Person> witnesses) {
-        System.arraycopy(this.witnessRecipients,this.witnessRecipients.size(), witnesses,0, witnesses.size());
+        this.witnessRecipients.addAll(witnesses);
     }
 }
