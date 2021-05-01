@@ -136,7 +136,8 @@ public class SmtpClient implements ISmtpClient {
 
                 //Partie body
                 writer.flush();
-                writer.write("Subject: " + message.getSubject() + '\n');
+                writer.write("Subject: " + message.getSubject() + "\n\n");
+                //writer.flush();
                 LOG.info(message.getBody());
                 writer.write(message.getBody());
                 writer.write("\r\n");
