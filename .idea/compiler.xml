@@ -8,7 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="MockMock (2)" />
         <module name="MockMock" />
-        <module name="mailrobot" />
+        <module name="smtp" />
         <module name="MockMock (1)" />
       </profile>
     </annotationProcessing>
@@ -17,6 +17,7 @@
       <module name="MockMock" target="1.7" />
       <module name="MockMock (1)" target="1.7" />
       <module name="MockMock (2)" target="1.7" />
+      <module name="smtp" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

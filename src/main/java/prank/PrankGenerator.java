@@ -52,7 +52,7 @@ public class PrankGenerator {
                 prank.addVictimRecipients(victims);
 
                 //Ajout des témoins
-                prank.addWitnessRecipients(victims);
+                prank.addWitnessRecipients(configurationManager.getWitnesses());
 
                 String message = messages.get(messageIndex);
                 messageIndex = (messageIndex + 1) % messages.size();
