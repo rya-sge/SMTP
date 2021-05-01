@@ -12,5 +12,12 @@
       "prenom": "Man",
       "email": "spider@man.movie"
     }
+  },
+  {
+    "personne": {
+      "nom": "Super",
+      "prenom": "Man",
+      "email": "super@man.movie"
+    }
   }
 ]

@@ -104,6 +104,7 @@ public class Prank {
      */
     public void addVictimRecipients(List<Person> victims) {
         this.victimRecipients.addAll(victims);
+        //System.arraycopy(this.victimRecipients,this.victimRecipients.size(), victims,0, victims.size());
     }
 
     /**
@@ -112,5 +113,6 @@ public class Prank {
      */
     public void addWitnessRecipients(List<Person> witnesses) {
         this.witnessRecipients.addAll(witnesses);
+       // System.arraycopy(this.witnessRecipients,this.witnessRecipients.size(), witnesses,0, witnesses.size());
     }
 }

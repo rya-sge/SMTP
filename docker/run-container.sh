@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run oliechti/teaching-docker-simplejavaserver
+docker run stmpSaugeViotti/smtp
