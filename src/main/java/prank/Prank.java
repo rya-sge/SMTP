@@ -86,7 +86,7 @@ public class Prank {
      * @return
      */
     public Message generateMailMessage(Message msg){
-        msg.setBody(this.message + "\r\n" +  victimSender.getNom());
+        msg.setBody(this.message.getBody() + "\r\n" +  victimSender.getNom());
         Iterator i = victimRecipients.iterator();
         List<String> b = new ArrayList();
         while(i.hasNext()){
@@ -94,6 +94,14 @@ public class Prank {
             b.add(p.getEmail() );
         }
         msg.setTo(b);
+        i = witnessRecipients.iterator();
+        b = new ArrayList();
+        while(i.hasNext()){
+            Person p = (Person)i.next();
+            b.add(p.getEmail() );
+        }
+        msg.setCc(b);
+        msg.setFrom(victimSender.getEmail());
         return msg;
     }
 
