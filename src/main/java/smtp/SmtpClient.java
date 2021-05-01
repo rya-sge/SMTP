@@ -122,11 +122,11 @@ public class SmtpClient implements ISmtpClient {
 
                 //Première ligne sans la virgule
                 writer.write("To: " + message.getTo());
+
+                writer.write(sautLigne);
                 while(i.hasNext()) {
                     writer.write(", " + "To: "  + i.next());
                 }
-                writer.write(sautLigne);
-
                 //Première ligne sans la virgule
                 writer.write("Cc: " + message.getCc());
                 while(i.hasNext()) {

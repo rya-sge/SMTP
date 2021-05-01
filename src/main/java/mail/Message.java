@@ -64,7 +64,6 @@ public class Message {
      * @param body
      */
     public void setBody(String body) {
-
         this.body = body;
     }
 

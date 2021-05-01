@@ -2,7 +2,7 @@
   {
     "config": {
         "smtpServerAddress": "localhost",
-        "smtpServerPort": "2525",
+        "smtpServerPort": "25",
         "numberOfGroups": "1",
         "witnessesToCC" : "ryansauge@gmail.com"
 
