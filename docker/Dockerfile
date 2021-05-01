@@ -9,7 +9,7 @@ RUN apt-get update && \
 #
 # When we build the image, we copy the executable jar in the image file system. 
 #
-COPY smtp-1.0-SNAPSHOT-jar-with-dependencies.jar /opt/app/smtp.jar
+COPY MockMock-1.4.0.one-jar.jar /opt/app/smtp.jar
 
 #
 # Our application will accept TCP connections on port 2205. Note that the EXPOSE statement
@@ -19,7 +19,7 @@ COPY smtp-1.0-SNAPSHOT-jar-with-dependencies.jar /opt/app/smtp.jar
 # assign random ports for each EXPOSEd port. We can then use the docker port command to know the port
 # numbers that have been selected.
 #
-EXPOSE 2205
+EXPOSE 2525
 
 #
 # This is the command that is executed when the Docker container starts
