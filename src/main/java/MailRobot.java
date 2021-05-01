@@ -24,7 +24,7 @@ public class MailRobot {
         while(i.hasNext()){
             Prank p = (Prank)i.next();
             Message m = new Message();
-            m.setFrom(p.getVictimSender().getEmail());
+            /*m.setFrom(p.getVictimSender().getEmail());
 
             List<String> toList = new ArrayList<>();
             for(Person per : p.getVictimRecipients())
@@ -37,9 +37,9 @@ public class MailRobot {
             for(Person per : p.getWitnessRecipients())
             {
                 witnessList.add(per.getEmail());
-            }
+            }*
 
-            m.setCc(witnessList);
+            m.setCc(witnessList);*/
             m.setBody(p.getMessage().getBody());
             m.setSubject(p.getMessage().getSubject());
             p.generateMailMessage(m);

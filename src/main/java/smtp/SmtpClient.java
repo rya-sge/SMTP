@@ -124,14 +124,14 @@ public class SmtpClient implements ISmtpClient {
                 writer.write("To: " + i.next());
 
                 while(i.hasNext()) {
-                    writer.write(", " + "To: "  + i.next());
+                    writer.write(", "  + i.next());
                 }
                 //Première ligne sans la virgule
                 i = message.getCc().iterator();
                 writer.write(sautLigne);
                 writer.write("Cc: " + i.next());
                 while(i.hasNext()) {
-                    writer.write(", " + "Cc: "  + i.next());
+                    writer.write(", " + i.next());
                 }
                 writer.write(sautLigne);
 
