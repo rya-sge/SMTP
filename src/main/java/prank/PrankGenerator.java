@@ -32,11 +32,11 @@ public class PrankGenerator {
             List<String> messages = configurationManager.getMessages();
             int messageIndex = 0;
 
-            int nombreGroupes = configurationManager.getNumberOfGroups();//Voir avec Viotti
-            int nombreDeVictims = configurationManager.getVictims().size(); //Voir avec Nico
+            int nombreGroupes =  configurationManager.getNumberOfGroups();
+            int nombreDeVictims = configurationManager.getVictims().size();
 
             if(nombreDeVictims / nombreGroupes < 3){
-                LOG.warning("Vous êtes trop gentis. Il n'y a pas assez de victimes");
+                LOG.warning("Vous êtes trop gentils. Il n'y a pas assez de victimes");
             }
             List<Group> groups = generateGroups(configurationManager.getVictims(), nombreGroupes);
             for(Group group : groups){
