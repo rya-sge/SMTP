@@ -34,35 +34,35 @@ public class ConfigManager  implements IConfigManager{
      */
     private List<Person> loadPersonsFromFile(String fileName) {
         List<Person> result = new ArrayList<>();
-    //JSON parser object pour lire le fichier
+        //JSON parser object pour lire le fichier
         JSONParser jsonParser = new JSONParser();
 
         try (FileReader reader = new FileReader(fileName)) {
 
-        // lecture du fichier
-        Object obj = jsonParser.parse(reader);
-        JSONArray victimes = (JSONArray)obj;
+            // lecture du fichier
+            Object obj = jsonParser.parse(reader);
+            JSONArray victimes = (JSONArray)obj;
 
-        JSONArray personne = (JSONArray) victimes;
+            JSONArray personne = (JSONArray) victimes;
 
-        // parcours du tableau de personnes
-        personne.forEach(pers->
-        {
-            result.add(parsePersonneObject((JSONObject)pers));
-        });
-    }
+            // parcours du tableau de personnes
+            personne.forEach(pers->
+            {
+                result.add(parsePersonneObject((JSONObject)pers));
+            });
+        }
         catch (FileNotFoundException e) {
-        e.printStackTrace();
-    }
+            e.printStackTrace();
+        }
         catch (IOException e) {
-        e.printStackTrace();
-    }
+            e.printStackTrace();
+        }
         catch (ParseException e) {
-        e.printStackTrace();
-    }
+            e.printStackTrace();
+        }
 
-    return result;
-}
+        return result;
+    }
 
     /**
      *
@@ -70,36 +70,36 @@ public class ConfigManager  implements IConfigManager{
      * @return
      */
     private List<String> loadMessagesFromFile(String fileName)
-{
-    List<String> result = new ArrayList<>();
-    //JSON parser object pour lire le fichier
-    JSONParser jsonParser = new JSONParser();
+    {
+        List<String> result = new ArrayList<>();
+        //JSON parser object pour lire le fichier
+        JSONParser jsonParser = new JSONParser();
 
-    try (FileReader reader = new FileReader(fileName)) {
+        try (FileReader reader = new FileReader(fileName)) {
 
-        // lecture du fichier
-        Object obj = jsonParser.parse(reader);
+            // lecture du fichier
+            Object obj = jsonParser.parse(reader);
 
-        JSONArray message = (JSONArray) obj;
+            JSONArray message = (JSONArray) obj;
 
-        // parcours du tableau de personnes
-        message.forEach(mess->
-        {
-            result.add(parseMessageObject((JSONObject)mess));
-        });
+            // parcours du tableau de personnes
+            message.forEach(mess->
+            {
+                result.add(parseMessageObject((JSONObject)mess));
+            });
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
-    catch (FileNotFoundException e) {
-        e.printStackTrace();
-    }
-    catch (IOException e) {
-        e.printStackTrace();
-    }
-    catch (ParseException e) {
-        e.printStackTrace();
-    }
-
-    return result;
-}
 
     /**
      *
@@ -109,10 +109,9 @@ public class ConfigManager  implements IConfigManager{
     private static String parseMessageObject(JSONObject mess) {
 
         // Obtenir l'objet personne dans la liste
-        JSONObject messObject = (JSONObject) mess.get("messages");
-        messObject = (JSONObject) messObject.get("message");
+        JSONObject messObject = (JSONObject) mess.get("message");
 
-        // obtenir les détails ...
+        // obtenir les dï¿½tails ...
         String text    = (String) messObject.get("text");
 
         // afficher le contenu
@@ -127,9 +126,8 @@ public class ConfigManager  implements IConfigManager{
     private static Person parsePersonneObject(JSONObject pers) {
 
         // Obtenir l'objet personne dans la liste
-        JSONObject persObject = (JSONObject) pers.get("victimes");
-        persObject = (JSONObject) persObject.get("personne");
-        // obtenir les détails ...
+        JSONObject persObject = (JSONObject) pers.get("personne");
+        // obtenir les dï¿½tails ...
         String nom    = (String) persObject.get("nom");
         String prenom = (String) persObject.get("prenom");
         String email  = (String) persObject.get("email");
