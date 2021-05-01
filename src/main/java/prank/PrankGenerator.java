@@ -16,7 +16,6 @@ public class PrankGenerator {
     private IConfigManager configurationManager;
 
     /**
-     *
      * @param configurationManager
      */
     public PrankGenerator(IConfigManager configurationManager) {
@@ -24,63 +23,61 @@ public class PrankGenerator {
     }
 
     /**
-     *
      * @return
      */
-    public List<Prank> generatePrank(){
-            List<Prank>pranks = new ArrayList<>();
+    public List<Prank> generatePrank() {
+        List<Prank> pranks = new ArrayList<>();
 
-            List<Message> messages = configurationManager.getMessages();
-            int messageIndex = 0;
+        List<Message> messages = configurationManager.getMessages();
+        int messageIndex = 0;
 
-            int nombreGroupes =  configurationManager.getNumberOfGroups();
-            int nombreDeVictims = configurationManager.getVictims().size();
+        int nombreGroupes = configurationManager.getNumberOfGroups();
+        int nombreDeVictims = configurationManager.getVictims().size();
 
-            if(nombreDeVictims / nombreGroupes < 3){
-                LOG.warning("Vous êtes trop gentils. Il n'y a pas assez de victimes");
-            }
-            List<Group> groups = generateGroups(configurationManager.getVictims(), nombreGroupes);
-            for(Group group : groups){
-                Prank prank = new Prank();
-                List<Person> victims = group.getPersons();
-                Collections.shuffle(victims);
+        if (nombreDeVictims / nombreGroupes < 3) {
+            LOG.warning("Vous êtes trop gentils. Il n'y a pas assez de victimes");
+        }
+        List<Group> groups = generateGroups(configurationManager.getVictims(), nombreGroupes);
+        for (Group group : groups) {
+            Prank prank = new Prank();
+            List<Person> victims = group.getPersons();
+            Collections.shuffle(victims);
 
-                //Choix du sender
-                Person sender = victims.remove(0);
-                prank.setVictimSender(sender);
+            //Choix du sender
+            Person sender = victims.remove(0);
+            prank.setVictimSender(sender);
 
-                //Ajout des victimes
-                prank.addVictimRecipients(victims);
+            //Ajout des victimes
+            prank.addVictimRecipients(victims);
 
-                //Ajout des témoins
-                prank.addWitnessRecipients(configurationManager.getWitnesses());
+            //Ajout des témoins
+            prank.addWitnessRecipients(configurationManager.getWitnesses());
 
-                Message message = messages.get(messageIndex);
-                messageIndex = (messageIndex + 1) % messages.size();
-                prank.setMessage(message);
+            Message message = messages.get(messageIndex);
+            messageIndex = (messageIndex + 1) % messages.size();
+            prank.setMessage(message);
 
-                pranks.add(prank);
-            }
-            return pranks;
+            pranks.add(prank);
+        }
+        return pranks;
     }
 
     /**
-     *
      * @param victims
      * @param numberOfGroups
      * @return
      */
-    private List<Group> generateGroups(List<Person> victims, int numberOfGroups){
+    private List<Group> generateGroups(List<Person> victims, int numberOfGroups) {
         List<Person> availableVictims = new ArrayList(victims);
         Collections.shuffle(availableVictims);
         List<Group> groups = new ArrayList<>();
-        for(int i = 0; i < numberOfGroups; i++){
+        for (int i = 0; i < numberOfGroups; i++) {
             Group group = new Group();
             groups.add(group);
         }
         int turn = 0;
         Group targetGroup;
-        while(availableVictims.size() > 0){
+        while (availableVictims.size() > 0) {
             targetGroup = groups.get(turn);
             turn = (turn + 1) % groups.size();
             Person victim = availableVictims.remove(0);

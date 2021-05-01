@@ -15,25 +15,14 @@ public class Prank {
     private final List<Person> witnessRecipients = new ArrayList<>();
     private Message message;
 
-    /**
-     *
-     * @param victimSender
-     * @param message
-     */
-    public Prank(Person victimSender, Message message) {
-        this.victimSender = victimSender;
-        this.message = message;
-    }
 
     /**
      *
      */
     public Prank() {
-
     }
 
     /**
-     *
      * @param victimSender
      */
     public void setVictimSender(Person victimSender) {
@@ -41,7 +30,6 @@ public class Prank {
     }
 
     /**
-     *
      * @param message
      */
     public void setMessage(Message message) {
@@ -49,7 +37,6 @@ public class Prank {
     }
 
     /**
-     *
      * @return
      */
     public Person getVictimSender() {
@@ -57,7 +44,6 @@ public class Prank {
     }
 
     /**
-     *
      * @return
      */
     public List<Person> getVictimRecipients() {
@@ -65,7 +51,6 @@ public class Prank {
     }
 
     /**
-     *
      * @return
      */
     public List<Person> getWitnessRecipients() {
@@ -73,7 +58,6 @@ public class Prank {
     }
 
     /**
-     *
      * @return
      */
     public Message getMessage() {
@@ -81,33 +65,30 @@ public class Prank {
     }
 
     /**
-     *
      * @param msg
      * @return
      */
-    public Message generateMailMessage(Message msg){
-        msg.setBody(this.message.getBody() + "\r\n" +  victimSender.getNom());
+    public void setMailMessage(Message msg) {
+        msg.setBody(this.message.getBody() + "\r\n" + victimSender.getNom());
         Iterator i = victimRecipients.iterator();
         List<String> b = new ArrayList();
-        while(i.hasNext()){
-            Person p = (Person)i.next();
-            b.add(p.getEmail() );
+        while (i.hasNext()) {
+            Person p = (Person) i.next();
+            b.add(p.getEmail());
         }
         msg.setTo(b);
         i = witnessRecipients.iterator();
         b = new ArrayList();
-        while(i.hasNext()){
-            Person p = (Person)i.next();
-            b.add(p.getEmail() );
+        while (i.hasNext()) {
+            Person p = (Person) i.next();
+            b.add(p.getEmail());
         }
         msg.setCc(b);
         msg.setFrom(victimSender.getEmail());
-        return msg;
     }
 
 
     /**
-     *
      * @param victims
      */
     public void addVictimRecipients(List<Person> victims) {
@@ -115,11 +96,10 @@ public class Prank {
     }
 
     /**
-     *
      * @param witnesses
      */
     public void addWitnessRecipients(List<Person> witnesses) {
         this.witnessRecipients.addAll(witnesses);
-       // System.arraycopy(this.witnessRecipients,this.witnessRecipients.size(), witnesses,0, witnesses.size());
+        // System.arraycopy(this.witnessRecipients,this.witnessRecipients.size(), witnesses,0, witnesses.size());
     }
 }

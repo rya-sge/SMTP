@@ -17,13 +17,19 @@ public class Person{
         this.prenom = prenom;
     }
 
+    /**
+     *
+     * @param email
+     */
     public Person(String email)
     {
-        //Vérifier adresse mail valide?
         this.email = email;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
