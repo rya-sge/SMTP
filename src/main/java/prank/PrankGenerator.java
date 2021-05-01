@@ -2,6 +2,7 @@ package prank;
 
 import config.IConfigManager;
 import mail.Group;
+import mail.Message;
 import mail.Person;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class PrankGenerator {
     public List<Prank> generatePrank(){
             List<Prank>pranks = new ArrayList<>();
 
-            List<String> messages = configurationManager.getMessages();
+            List<Message> messages = configurationManager.getMessages();
             int messageIndex = 0;
 
             int nombreGroupes =  configurationManager.getNumberOfGroups();
@@ -54,7 +55,7 @@ public class PrankGenerator {
                 //Ajout des témoins
                 prank.addWitnessRecipients(configurationManager.getWitnesses());
 
-                String message = messages.get(messageIndex);
+                Message message = messages.get(messageIndex);
                 messageIndex = (messageIndex + 1) % messages.size();
                 prank.setMessage(message);
 

@@ -1,6 +1,7 @@
 package config;
 
 
+import mail.Message;
 import mail.Person;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -16,7 +17,7 @@ public class ConfigManager  implements IConfigManager{
     private String smtpServerAddress;
     private int stmpServerPort;
     private final List<Person> victims;
-    private final List<String> messages;
+    private final List<Message> messages;
     private int numberOfGroups;
     private List<Person> witnesses;
 
@@ -69,9 +70,9 @@ public class ConfigManager  implements IConfigManager{
      * @param fileName
      * @return
      */
-    private List<String> loadMessagesFromFile(String fileName)
+    private List<Message> loadMessagesFromFile(String fileName)
     {
-        List<String> result = new ArrayList<>();
+        List<Message> result = new ArrayList<>();
         //JSON parser object pour lire le fichier
         JSONParser jsonParser = new JSONParser();
 
@@ -106,7 +107,8 @@ public class ConfigManager  implements IConfigManager{
      * @param mess
      * @return
      */
-    private static String parseMessageObject(JSONObject mess) {
+    private static Message parseMessageObject(JSONObject mess) {
+        Message m = new Message();
 
         // Obtenir l'objet personne dans la liste
         JSONObject messObject = (JSONObject) mess.get("message");
@@ -114,10 +116,11 @@ public class ConfigManager  implements IConfigManager{
         // obtenir les d�tails ...
         String text    = (String) messObject.get("text");
         String subject = (String) messObject.get("subject");
-        text = subject + "\r\n" + text + "\r\n";
+        m.setBody(text);
+        m.setSubject(subject);
 
         // afficher le contenu
-        return text;
+        return m;
     }
 
     /**
@@ -185,7 +188,7 @@ public class ConfigManager  implements IConfigManager{
     }
 
     @Override
-    public List<String> getMessages()
+    public List<Message> getMessages()
     {
         return messages;
     }

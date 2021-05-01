@@ -7,6 +7,11 @@ import java.util.List;
 public class Message {
     private String from;
     private String body;
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
     private String subject;
 
     private List<String> to = new ArrayList();
