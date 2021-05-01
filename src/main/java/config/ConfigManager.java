@@ -38,7 +38,7 @@ public class ConfigManager  implements IConfigManager{
         //JSON parser object pour lire le fichier
         JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader(fileName)) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"))) {
 
             // lecture du fichier
             Object obj = jsonParser.parse(reader);
@@ -76,7 +76,7 @@ public class ConfigManager  implements IConfigManager{
         //JSON parser object pour lire le fichier
         JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader(fileName)) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"))) {
 
             // lecture du fichier
             Object obj = jsonParser.parse(reader);
@@ -150,8 +150,7 @@ public class ConfigManager  implements IConfigManager{
         //JSON parser object pour lire le fichier
         JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader(fileName)) {
-
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"))) {
             // lecture du fichier
             Object obj = jsonParser.parse(reader);
             JSONArray config = (JSONArray) obj;
