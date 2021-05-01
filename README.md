@@ -54,7 +54,7 @@ NB : L'envoyeur et le message sont tirés au hasard dans la liste disponible.
 
 ## Description de l'implémentation
 
-![diagramme](.\images\diagramme.png)
+![diagramme](images/diagramme.png)
 
 ### Package config
 
