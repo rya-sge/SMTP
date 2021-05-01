@@ -121,16 +121,17 @@ public class SmtpClient implements ISmtpClient {
                 i = message.getTo().iterator();
 
                 //Première ligne sans la virgule
-                writer.write("To: " + message.getTo());
+                writer.write("To: " + i.next());
 
-                writer.write(sautLigne);
                 while(i.hasNext()) {
                     writer.write(", " + "To: "  + i.next());
                 }
                 //Première ligne sans la virgule
-                writer.write("Cc: " + message.getCc());
+                i = message.getCc().iterator();
+                writer.write(sautLigne);
+                writer.write("Cc: " + i.next());
                 while(i.hasNext()) {
-                    writer.write(", " + "Cc: "  + message.getTo());
+                    writer.write(", " + "Cc: "  + i.next());
                 }
                 writer.write(sautLigne);
 
