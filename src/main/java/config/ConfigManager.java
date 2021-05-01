@@ -113,6 +113,8 @@ public class ConfigManager  implements IConfigManager{
 
         // obtenir les d�tails ...
         String text    = (String) messObject.get("text");
+        String subject = (String) messObject.get("subject");
+        text = subject + "\r\n" + text + "\r\n";
 
         // afficher le contenu
         return text;
