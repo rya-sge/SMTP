@@ -3,7 +3,6 @@ LABEL authors="Ryan Sauge, Nicolas Viotti"
 
 # Install netcat, so that we can demonstrate container-to-container communication
 RUN apt-get update && \
-  apt-get -y install netcat && \
   apt-get clean 
   
 #
