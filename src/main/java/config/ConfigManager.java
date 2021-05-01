@@ -22,9 +22,9 @@ public class ConfigManager  implements IConfigManager{
     private List<Person> witnesses;
 
     public ConfigManager()  {
-        victims = loadPersonsFromFile("./src/main/config/victims.json");
-        messages = loadMessagesFromFile("./src/main/config/messages.json");
-        loadConfig("./src/main/config/config.json");
+        victims = loadPersonsFromFile("/config/victims.json");
+        messages = loadMessagesFromFile("/config/messages.json");
+        loadConfig("/config/config.json");
     }
 
     /**
@@ -38,7 +38,7 @@ public class ConfigManager  implements IConfigManager{
         //JSON parser object pour lire le fichier
         JSONParser jsonParser = new JSONParser();
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(fileName), "UTF-8"))) {
 
             // lecture du fichier
             Object obj = jsonParser.parse(reader);
@@ -76,7 +76,7 @@ public class ConfigManager  implements IConfigManager{
         //JSON parser object pour lire le fichier
         JSONParser jsonParser = new JSONParser();
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(fileName), "UTF-8"))) {
 
             // lecture du fichier
             Object obj = jsonParser.parse(reader);
@@ -150,7 +150,7 @@ public class ConfigManager  implements IConfigManager{
         //JSON parser object pour lire le fichier
         JSONParser jsonParser = new JSONParser();
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(fileName), "UTF-8"))) {
             // lecture du fichier
             Object obj = jsonParser.parse(reader);
             JSONArray config = (JSONArray) obj;
