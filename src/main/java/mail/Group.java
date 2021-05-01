@@ -6,21 +6,8 @@ import java.util.List;
 public class Group {
 
     List<Person> persons = new ArrayList<>();
-    String nom;
 
-    /**
-     *
-     * @param persons
-     * @param nom
-     */
-    public Group(List<Person> persons, String nom) {
-        System.arraycopy(persons, 0, this.persons, 0, persons.size());
-        this.nom = nom;
-    }
-
-    public Group() {
-
-    }
+    public Group() { }
 
     /**
      *
