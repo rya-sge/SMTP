@@ -45,10 +45,11 @@ public class SmtpClient implements ISmtpClient {
                 LOG.info(line);
 
                 //Prendre contact avec serveur smtp
-                writer.write("EHLO localhost\r\n");
+                writer.write("EHLO localhost" + sautLigne);
+                writer.flush();
                 line = reader.readLine(); //Récupérer réponse serveur
                 LOG.info(line);
-                if(!line.startsWith("250")) {
+                if(!line.startsWith("250-")) {
                     throw new IOException("SMTP error: " + line);
                 }
                 //Récupérer info envoyé par le serveur
@@ -64,7 +65,7 @@ public class SmtpClient implements ISmtpClient {
                 writer.flush();
                 line = reader.readLine();
                 if(!line.startsWith("250")) {
-
+                    throw new IOException("SMTP error: " + line);
                 }
                 LOG.info(line);
 
@@ -75,23 +76,25 @@ public class SmtpClient implements ISmtpClient {
                     writer.write(sautLigne);
                     writer.flush();
                     line = reader.readLine();
+                    if(!line.startsWith("250")) {
+                        throw new IOException("SMTP error: " + line);
+                    }
                     LOG.info(line);
                 }
-
-                writer.write(sautLigne);
 
                 //Partie CC
                 i = message.getCc().iterator();
                 while(i.hasNext()) {
+                    //String c = (String)i.next();
                     writer.write("RCPT TO:" + i.next());
                     writer.write(sautLigne);
                     writer.flush();
                     line = reader.readLine();
+                    if(!line.startsWith("250")) {
+                        throw new IOException("SMTP error: " + line);
+                    }
                     LOG.info(line);
                 }
-
-                writer.write(sautLigne);
-                writer.flush();
 
                 //partie BCC
                 i = message.getBcc().iterator();
@@ -102,8 +105,7 @@ public class SmtpClient implements ISmtpClient {
                     line = reader.readLine();
                     LOG.info(line);
                 }
-                //writer.write(sautLigne);
-               // writer.flush();
+
                 writer.write("DATA");
                 writer.write(sautLigne);
                 writer.flush();

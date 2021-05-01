@@ -1,10 +1,10 @@
 [
   {
     "config": {
-        "smtpServerAddress": "smtp.heig-vd.ch",
-        "smtpServerPort": "25",
+        "smtpServerAddress": "localhost",
+        "smtpServerPort": "2525",
         "numberOfGroups": "1",
-        "witnessesToCC" : "nicolas.viotti@heig-vd.ch"
+        "witnessesToCC" : "ryansauge@gmail.com"
 
     }
   }

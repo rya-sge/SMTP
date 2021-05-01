@@ -39,7 +39,7 @@ public class MailRobot {
                 witnessList.add(per.getEmail());
             }
             m.setCc(witnessList);
-
+            m.setBody(p.getMessage());
             client.sendMessage(m);
 
         }
