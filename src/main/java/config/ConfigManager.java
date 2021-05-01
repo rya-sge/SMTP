@@ -109,10 +109,9 @@ public class ConfigManager  implements IConfigManager{
     private static String parseMessageObject(JSONObject mess) {
 
         // Obtenir l'objet personne dans la liste
-        JSONObject messObject = (JSONObject) mess.get("messages");
-        messObject = (JSONObject) messObject.get("message");
+        JSONObject messObject = (JSONObject) mess.get("message");
 
-        // obtenir les détails ...
+        // obtenir les dï¿½tails ...
         String text    = (String) messObject.get("text");
 
         // afficher le contenu
@@ -127,9 +126,8 @@ public class ConfigManager  implements IConfigManager{
     private static Person parsePersonneObject(JSONObject pers) {
 
         // Obtenir l'objet personne dans la liste
-        JSONObject persObject = (JSONObject) pers.get("victimes");
-        persObject = (JSONObject) persObject.get("personne");
-        // obtenir les détails ...
+        JSONObject persObject = (JSONObject) pers.get("personne");
+        // obtenir les dï¿½tails ...
         String nom    = (String) persObject.get("nom");
         String prenom = (String) persObject.get("prenom");
         String email  = (String) persObject.get("email");

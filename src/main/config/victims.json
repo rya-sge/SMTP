@@ -1,16 +1,16 @@
 [
   {
-    "victimes": {
-      "personne": {
-        "prenom": "Charlie",
-        "nom": "Chaplin",
-        "email": "charlie@chapelin.fun"
-      },
-      "personne": {
-        "prenom": "Spider",
-        "nom": "Man",
-        "email": "spider@man.movie"
-      }
+    "personne": {
+      "prenom": "Charlie",
+      "nom": "Chaplin",
+      "email": "charlie@chapelin.fun"
+    }
+  },
+  {
+    "personne": {
+      "nom": "Spider",
+      "prenom": "Man",
+      "email": "spider@man.movie"
     }
   }
 ]
