@@ -1,4 +1,4 @@
-FROM openjdk:8-jre
+FROM openjdk:11-jre
 LABEL authors="Ryan Sauge, Nicolas Viotti"
 
 # Install netcat, so that we can demonstrate container-to-container communication
@@ -9,7 +9,7 @@ RUN apt-get update && \
 #
 # When we build the image, we copy the executable jar in the image file system. 
 #
-COPY smtp-1.0-SNAPSHOT.jar /opt/app/smtp.jar
+COPY smtp-1.0-SNAPSHOT-jar-with-dependencies.jar /opt/app/smtp.jar
 
 #
 # Our application will accept TCP connections on port 2205. Note that the EXPOSE statement

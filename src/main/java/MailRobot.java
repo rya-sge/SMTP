@@ -3,8 +3,6 @@ import prank.Prank;
 import prank.PrankGenerator;
 import smtp.SmtpClient;
 import mail.Message;
-
-import java.util.Iterator;
 import java.util.List;
 
 public class MailRobot {
