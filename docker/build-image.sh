@@ -4,7 +4,7 @@
 mvn clean install --file ../pom.xml
 
 # Copy the executable jar file in the current directory
-cp ../target/smtp-1.0-SNAPSHOT.jar .
+cp ../target/smtp-1.0-SNAPSHOT-jar-with-dependencies.jar .
 
 # Build the Docker image locally
 docker build --tag stmp_sauge_viotti/smtp .
