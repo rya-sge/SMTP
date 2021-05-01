@@ -13,14 +13,14 @@ public class Prank {
     private Person victimSender;
     private final List<Person> victimRecipients = new ArrayList<>();
     private final List<Person> witnessRecipients = new ArrayList<>();
-    private String message;
+    private Message message;
 
     /**
      *
      * @param victimSender
      * @param message
      */
-    public Prank(Person victimSender, String message) {
+    public Prank(Person victimSender, Message message) {
         this.victimSender = victimSender;
         this.message = message;
     }
@@ -44,7 +44,7 @@ public class Prank {
      *
      * @param message
      */
-    public void setMessage(String message) {
+    public void setMessage(Message message) {
         this.message = message;
     }
 
@@ -76,22 +76,22 @@ public class Prank {
      *
      * @return
      */
-    public String getMessage() {
+    public Message getMessage() {
         return message;
     }
 
     /**
      *
+     * @param msg
      * @return
      */
-    public Message generateMailMessage(){
-        Message msg = new Message();
-
+    public Message generateMailMessage(Message msg){
         msg.setBody(this.message + "\r\n" +  victimSender.getNom());
         Iterator i = victimRecipients.iterator();
         List<String> b = new ArrayList();
         while(i.hasNext()){
-            b.add((String) i.next());
+            Person p = (Person)i.next();
+            b.add(p.getEmail() );
         }
         msg.setTo(b);
         return msg;
@@ -104,7 +104,6 @@ public class Prank {
      */
     public void addVictimRecipients(List<Person> victims) {
         this.victimRecipients.addAll(victims);
-        //System.arraycopy(this.victimRecipients,this.victimRecipients.size(), victims,0, victims.size());
     }
 
     /**

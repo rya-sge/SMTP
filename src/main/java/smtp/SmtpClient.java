@@ -103,6 +103,9 @@ public class SmtpClient implements ISmtpClient {
                     writer.write(sautLigne);
                     writer.flush();
                     line = reader.readLine();
+                    if(!line.startsWith("250")) {
+                        throw new IOException("SMTP error: " + line);
+                    }
                     LOG.info(line);
                 }
 
@@ -132,6 +135,8 @@ public class SmtpClient implements ISmtpClient {
                 writer.write(sautLigne);
 
                 //Partie body
+                writer.flush();
+                writer.write("Subject: " + message.getSubject() + '\n');
                 LOG.info(message.getBody());
                 writer.write(message.getBody());
                 writer.write("\r\n");

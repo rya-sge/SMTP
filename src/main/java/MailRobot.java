@@ -38,8 +38,11 @@ public class MailRobot {
             {
                 witnessList.add(per.getEmail());
             }
+
             m.setCc(witnessList);
-            m.setBody(p.getMessage());
+            m.setBody(p.getMessage().getBody());
+            m.setSubject(p.getMessage().getSubject());
+            p.generateMailMessage(m);
             client.sendMessage(m);
 
         }
