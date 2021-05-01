@@ -43,10 +43,15 @@ public class PrankGenerator {
                 Prank prank = new Prank();
                 List<Person> victims = group.getPersons();
                 Collections.shuffle(victims);
+
+                //Choix du sender
                 Person sender = victims.remove(0);
                 prank.setVictimSender(sender);
+
+                //Ajout des victimes
                 prank.addVictimRecipients(victims);
 
+                //Ajout des témoins
                 prank.addWitnessRecipients(victims);
 
                 String message = messages.get(messageIndex);

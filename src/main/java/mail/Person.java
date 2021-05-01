@@ -19,7 +19,7 @@ public class Person{
 
     public Person(String email)
     {
-        //V�rifier adresse mail valide?
+        //Vérifier adresse mail valide?
         this.email = email;
     }
 
