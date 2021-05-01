@@ -32,7 +32,7 @@ public class PrankGenerator {
             List<String> messages = configurationManager.getMessages();
             int messageIndex = 0;
 
-            int nombreGroupes = 0;//Voir avec Viotti
+            int nombreGroupes = configurationManager.getNumberOfGroups();//Voir avec Viotti
             int nombreDeVictims = configurationManager.getVictims().size(); //Voir avec Nico
 
             if(nombreDeVictims / nombreGroupes < 3){
