@@ -47,12 +47,12 @@ public class SmtpClient implements ISmtpClient {
                 //Prendre contact avec serveur smtp
                 writer.write("EHLO localhost" + sautLigne);
                 writer.flush();
-                line = reader.readLine(); //Récupérer réponse serveur
+                line = reader.readLine(); //RÃ©cupÃ©rer rÃ©ponse serveur
                 LOG.info(line);
                 if(!line.startsWith("250-")) {
                     throw new IOException("SMTP error: " + line);
                 }
-                //Récupérer info envoyé par le serveur
+                //RÃ©cupÃ©rer info envoyÃ© par le serveur
                 while(line.startsWith("250-")){
                     line = reader.readLine();
                     LOG.info(line);
@@ -120,13 +120,13 @@ public class SmtpClient implements ISmtpClient {
                 //writer.write("to: " + message.getTo());
                 i = message.getTo().iterator();
 
-                //Première ligne sans la virgule
+                //PremiÃ¨re ligne sans la virgule
                 writer.write("To: " + i.next());
 
                 while(i.hasNext()) {
                     writer.write(", "  + i.next());
                 }
-                //Première ligne sans la virgule
+                //PremiÃ¨re ligne sans la virgule
                 i = message.getCc().iterator();
                 writer.write(sautLigne);
                 writer.write("Cc: " + i.next());

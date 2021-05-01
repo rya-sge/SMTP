@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run stmpSaugeViotti/smtp
+docker run stmp_sauge_viotti/smtp

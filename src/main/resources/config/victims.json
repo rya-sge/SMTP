@@ -1,0 +1,51 @@
+[
+  {
+    "personne": {
+      "prenom": "Charlie",
+      "nom": "Chaplin",
+      "email": "charlie@chapelin.fun"
+    }
+  },
+  {
+    "personne": {
+      "nom": "Spider",
+      "prenom": "Man",
+      "email": "spider@man.movie"
+    }
+  },
+  {
+    "personne": {
+      "nom": "Super",
+      "prenom": "Man",
+      "email": "super@man.movie"
+    }
+  },
+  {
+    "personne": {
+      "nom": "Choco",
+      "prenom": "Lat",
+      "email": "nestl@com"
+    }
+  },
+  {
+    "personne": {
+      "nom": "Fraise",
+      "prenom": "Legume",
+      "email": "Legume@gmail.com"
+    }
+  },
+  {
+    "personne": {
+      "nom": "Car",
+      "prenom": "Otte",
+      "email": "orange@gmail.com"
+    }
+  },
+  {
+    "personne": {
+      "nom": "Cray",
+      "prenom": "On",
+      "email": "Trousse@gmail.com"
+    }
+  }
+]
