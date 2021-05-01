@@ -5,7 +5,6 @@
         "smtpServerPort": "25",
         "numberOfGroups": "1",
         "witnessesToCC" : "nicolas.viotti@heig-vd.ch"
-
     }
   }
 ]

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Group {
 
-    List<Person> persons;
+    List<Person> persons = new ArrayList<>();
     String nom;
 
     /**
