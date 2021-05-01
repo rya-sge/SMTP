@@ -8,6 +8,19 @@ Ce repository est issu d'un laboratoire pour nos études. Le but de ce laboratoi
 
 ## Mise en place d'un serveur SMTP Mock
 
+Afin de simuler un serveur SMTP, nous allons utiliser MockMock ainsi que Docker. Il vous faut donc télécharger les deux au préalable.
+
+https://github.com/tweakers/MockMock clonez le repo en local sur votre machine.
+
+https://www.docker.com/get-started
+
+Une fois cela fait, copier/coller le dossier nommé "docker" du projet dans le dossier de votre MockMock et exécutez les scripts build-image.sh et  run-container.sh
+Le premier va créer l'image à partir de votre MockMock et le second l'exécuter dans votre Docker. Ainsi, votre serveur MockMock tournera en arrière plan sous votre Docker. Il vous sera ensuite accessible en localhost au port 2525.
+
+Si toutefois vous ne pouvez pas cloner MockMock, nous vous avons fourni un .jar qui vous permettra de monter un container. Cette fois, n'exécutez que le script run-container.sh
+
+Sous Docker, vous devriez voir un container dans l'état running avec le port 2525.
+
 ## Configuration et exécution
 
 ### Configuration
