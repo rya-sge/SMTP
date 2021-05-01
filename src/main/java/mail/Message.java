@@ -59,8 +59,15 @@ public class Message {
      * @param body
      */
     public void setBody(String body) {
-
-        this.body = body;
+        int iend = body.indexOf("\r\n"); //this finds the first occurrence of "."
+        String subString="";
+        if (iend != -1)
+        {
+            subString= body.substring(0 , iend); //this will give abc
+            subString = "Subject:" + subString +  "\r\n";
+        }
+        this.subject = subString;
+        this.body = "Subject:" +body;
     }
 
     /**
