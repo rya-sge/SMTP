@@ -102,7 +102,7 @@ SmtpClient est la classe qui s'occupe de la connexion, de  communication avec le
 
 Voici un exemple de communication entre la classe SmtpClient et le serveur SMTP Mock.
 
-![ClientServerSMTP](https://github.com/rya-sge/smtp/tree/newMain/images/ClientServerSMTP.png?raw=true)
+![ClientServerSMTP](images/ClientServerSMTP.png)
 
 Une fois la connexion établie et le EHLO envoyé au serveur de l'envoyeur, chaque réponse positive du serveur se fera avec le code 250. On envoit donc dans l'ordre l'adresse email de l'envoyeur, puis le destinataire (il suffit de répéter l'envoi de RCPT avec d'autres adresses pour définir d'autres destinataires). Une fois qu'on souhaite envoyer le corps du message, le client envoit DATA, attends la réponse 352 qui indique comment terminer les DATA et envoit le corps du mail, qu'il termine par un envoi de "."
 
