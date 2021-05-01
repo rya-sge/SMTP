@@ -1,12 +1,12 @@
 [
   {
-    "messages": {
-      "message": {
-        "text": "Charlie"
-      },
-      "message": {
-        "text": "Spider"
-      }
+    "message": {
+      "text": "Charlie"
+    }
+  },
+  {
+    "message": {
+      "text": "Spider"
     }
   }
 ]
