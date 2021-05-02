@@ -86,9 +86,9 @@ Exemple avec un terminal bash. Un exemple plus détaillé se trouve dans la part
 
 Si vous souhaitez avoir la dernière version de MockMock, vous pouvez cloner en local sur votre machine le repo depuis le gihub du projet : https://github.com/tweakers/MockMock
 
-Une fois cela fait, copier/coller le dossier nommé "docker" du projet dans le dossier de votre MockMock et exécutez les scripts *build-image-evolue.sh* puis *run-container.sh*
+Une fois cela fait, copier/coller le dossier nommé "docker" du projet dans le dossier de votre MockMock et exécutez les scripts *build-image-evoluee.sh* puis *run-container.sh*
 
-build-image-evolue.sh  va créer l'image à partir de votre MockMock et run-container.sh va l'exécuter dans votre Docker. 
+build-image-evoluee.sh  va créer l'image à partir de votre MockMock et run-container.sh va l'exécuter dans votre Docker. 
 
 Exemple avec un terminal bash. Un exemple plus détaillé se trouve dans la partie Exemple du readMe.
 
