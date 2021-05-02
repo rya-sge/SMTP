@@ -153,5 +153,39 @@ Lorsqu'il souhaite quitter, le client envoie QUIT et recevra un 221 indiquant qu
 
 # Exemple
 
+### Installation basique
 
+1) Cloner le repo, déplacer-vous dans le dosser smtp/docker, rendez les scripts exécutables puis lancer la version basique du script : build-image-basique.sh
+
+![ex1A](.\images\ex1A.JPG)
+
+
+
+2) Ces 2 messages indiquent que la commande build a pu créer l'image et celle-ci s'appelle smtp_sauge_viotti/smtp
+
+![ex1B](.\images\ex1B.JPG)
+
+
+
+3) Ensuite, toujours dans le dossier docker, lancez le script run-container.sh qui va exécuter le container à partir de l'image précédemment créée![ex1C](.\images\ex1C.JPG)
+
+
+
+4) Ensuite déplacez-vous dans le dossier target, qui se trouve à la racine du repository et exécuter le fichier jar smtp-1.0-SNAPSHOT-jar-with-dependencies.jar.
+
+Les lignes suivantes indiquent que la connexion a réussie
+
+![ex1D](.\images\ex1D.JPG)
+
+
+
+### Installation évoluée
+
+1) Copier le dossier docker dans le repo cloné de MockMock et exécuter build-image-evoluee.sh
+
+![ex2A](.\images\ex2A.JPG)
+
+2) Exécuter ./run-container.sh pour exécuter le container depuis l'image précédemment créée
+
+![ex2B](.\images\ex2B.JPG)
 
