@@ -56,7 +56,7 @@ Le .jar du projet est toujours crée dans le dossier target et peut être lancé
 
 NB : L'envoyeur et le message sont tirés au hasard dans la liste disponible.
 
-Attention : Vous devez relancé la production du .jar si vous modifiez vos fichiers de configuration. En raison de problème de compilation avec Maven/Intelliji, nous n'avons pas pu les places à l'extérieur du jar.
+---Attention : Vous devez relancer la production du .jar si vous modifiez vos fichiers de configuration. En raison de problème de compilation avec Maven/Intelliji, nous n'avons pas pu les places à l'extérieur du jar.
 
 ## Lancement avec Docker et Maven
 
