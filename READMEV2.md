@@ -6,47 +6,6 @@ Auteurs : Sauge Ryan, Viotti Nicolas
 
 Ce repository est issu d'un laboratoire pour nos études. Le but de ce laboratoire était de simuler des "pranks" consistant à envoyer des mails sur un serveur SMTP. L'utilisateur peut définir l'adresse du serveur, une liste de messages et une liste de victimes qui seront tirés aléatoirement pour l'envoi des pranks.
 
-## Mise en place d'un serveur SMTP Mock
-
-Pour simuler un serveur SMTP, nous allons le conteneurisé avec Docker. Il vous faut donc l'installer au préalable.
-
-https://www.docker.com/get-started
-
-### Démarche
-
-Pour le serveur SMPT, vous allez le choix entre 2 installations possibles :
-
-**Version basique :**
-
-Depuis le dosser racine du projet, aller dans le dosser nommé docker et exécuter run-container.sh. Celui-ci prendra alors l'exécutable MockMock-1.4.0.one-jar.jar disponible dans le dossier 
-
-Exemple avec un terminal bash
-
-> cd docker 
->
-> chmod +x ./*.sh 
->
-> ./run-container.sh 
-
-**Version évoluée :**
-
-Si vous souhaitez avoir la dernière version de MockMock, vous pouvez cloner en local sur votre machine le repo depuis le gihub du projet : https://github.com/tweakers/MockMock
-
-Une fois cela fait, copier/coller le dossier nommé "docker" du projet dans le dossier de votre MockMock et exécutez les scripts build-image.sh puis run-container.sh
-
-build-image.sh  va créer l'image à partir de votre MockMock et run-container.sh va l'exécuter dans votre Docker. 
-
-### Résultat
-
-Sous Docker, vous devriez voir un container dans l'état running avec le port 2525.
-
-
-Ainsi, votre serveur MockMock tournera en arrière plan sous votre Docker. Il vous sera ensuite accessible en localhost au port 2525.
-
-
-
-
-
 ## Configuration et exécution
 
 ### Configuration
@@ -65,6 +24,8 @@ Les fichiers de configuration sont des fichiers JSON. Ils sont aux nombres de tr
 - smtpServerPort : le port du serveur SMTP
 - numberOfGroups : Le nombre de groupes qui seront formés pour les pranks. Un groupe contiendra au moins 3 personnes(un envoyeur, et deux destinataires). Prévoyez donc un nombre de victimes (voir victims.json) suffisamment grand.
 - witnessesToCC : les adresses email en copie cachée, à séparer par une virgule. (a@b.com,b@c.com)
+
+La configuration par défaut est celle pour un server MockMock
 
 #### victims.json
 
@@ -87,9 +48,85 @@ Un groupe tirera un des messages de cette liste aléatoirement en tant que prank
 
 ### Exécution
 
-Une fois les fichiers de configuration édités, il suffit de lancer le projet pour envoyer les emails.
+Une fois les fichiers de configuration édités, vous pouvez soit utiliser Docker et Maven soit uniquement produire le .jar avec maven. Les explications se trouvent plus bas.
+
+Le .jar du projet est toujours crée dans le dossier target et peut être lancé avec la commande suivante :
+
+>  java -jar  *smtp-1.0-SNAPSHOT-jar-with-dependencies.jar*
 
 NB : L'envoyeur et le message sont tirés au hasard dans la liste disponible.
+
+## Lancement avec Docker et Maven
+
+### Installation
+
+Pour simuler un serveur SMTP et générer le .jar du projet, nous allons le conteneurisé avec Docker. Il vous faut donc l'installer au préalable : https://www.docker.com/get-started.
+
+Nous utilisons également Maven pour gérer les dépendances et produire le .jar du projet. Il vous faut par conséquent aussi l'installer : https://maven.apache.org/download.cgi.
+
+Dans le dossier docker du projet, les scripts vous permettront de générer le .jar du projet ainsi que de faire tourner un server MockMock en arrière plan.
+
+Le script sudo ./build-image-bash.sh permet de lancer le conteneur contenant le MockMock avec un bash. Il est fourni à titre de débuggage mais n'a pas besoin d'être lancé. 
+
+#### Version basique 
+
+Depuis le dosser racine du projet, aller dans le dossier nommé docker et exécuter *build-image-basique.sh* puis *run-container.sh*. Celui-ci prendra alors l'exécutable MockMock-1.4.0.one-jar.jar disponible dans le dossier 
+
+Exemple avec un terminal bash. Un exemple plus détaillé se trouve dans la partie Exemple du readMe.
+
+> cd docker 
+>
+> chmod +x ./*.sh 
+>
+> sudo ./build-image-basique.sh
+>
+> sudo ./run-container.sh 
+
+#### Version évoluée 
+
+Si vous souhaitez avoir la dernière version de MockMock, vous pouvez cloner en local sur votre machine le repo depuis le gihub du projet : https://github.com/tweakers/MockMock
+
+Une fois cela fait, copier/coller le dossier nommé "docker" du projet dans le dossier de votre MockMock et exécutez les scripts *build-image-evolue.sh* puis *run-container.sh*
+
+build-image-evolue.sh  va créer l'image à partir de votre MockMock et run-container.sh va l'exécuter dans votre Docker. 
+
+Exemple avec un terminal bash. Un exemple plus détaillé se trouve dans la partie Exemple du readMe.
+
+> cd docker 
+>
+> chmod +x ./*.sh 
+>
+> sudo ./build-image-evoluee.sh
+>
+> sudo ./run-container.sh 
+
+### Résultat
+
+Sous Docker, vous devriez voir un container dans l'état running avec le port 2525.
+
+Ainsi, votre serveur MockMock tournera en arrière plan sous votre Docker. Il vous sera ensuite accessible en localhost au port 2525.
+
+### Lancement du jar
+
+Les scripts build crées automatiquement le fichier *smtp-1.0-SNAPSHOT-jar-with-dependencies.jar* dans le dossier target. Vous pouvez alors lancer le .jar avec la commande suivante
+
+>  java -jar  *smtp-1.0-SNAPSHOT-jar-with-dependencies.jar*
+
+Pour voir les emails envoyés sur Mockmock, vous pouvez lire la partie Installation / setup sur leur repo : https://github.com/tweakers/MockMock
+
+De plus, dans partie exemples du readMe (voir plus bas), la partie Vérification des emails vous donne la démarche à suivre avec Docker
+
+## Sans Docker et MockMock
+
+Si vous ne souhaitez pas utiliser MockMock et Docker, vous pouvez depuis le dossier racine du projet faire la commande ci-dessous qui générera un fichier jar *smtp-1.0-SNAPSHOT-jar-with-dependencies.jar* dans le dossier target
+
+> mvn clean install
+
+Il vous suffira ensuite d'aller dans le dossier target et d'exécuter le jar avec la commande suivante :
+
+> java -jar  *smtp-1.0-SNAPSHOT-jar-with-dependencies.jar*
+
+
 
 ## Description de l'implémentation
 
@@ -137,7 +174,7 @@ Un prank contient les victimes (envoyeur/destinataires), les personnes en CC ain
 
 SmtpClient est la classe qui s'occupe de la connexion, de  communication avec le serveur, de la mise en forme du mail ainsi que de l'envoi de celui-ci.
 
-### Communication Client-Serveur
+## Communication Client-Serveur
 
 Voici un exemple de communication entre la classe SmtpClient et le serveur SMTP Mock.
 
@@ -167,7 +204,11 @@ Lorsqu'il souhaite quitter, le client envoie QUIT et recevra un 221 indiquant qu
 
 
 
-3) Ensuite, toujours dans le dossier docker, lancez le script run-container.sh qui va exécuter le container à partir de l'image précédemment créée![ex1C](images/ex1C.JPG)
+3) Ensuite, toujours dans le dossier docker, lancez le script run-container.sh qui va exécuter le container à partir de l'image précédemment créée
+
+![ex1C](images/ex1C.JPG)
+
+
 
 
 
