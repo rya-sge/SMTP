@@ -12,7 +12,7 @@ Ce repository est issu d'un laboratoire pour nos études. Le but de ce laboratoi
 
 Commencez par cloner le projet sur votre machine.
 
-Les fichiers de configuration sont des fichiers JSON. Ils sont aux nombres de trois et sont contenus dans le dossier main/config/ du projet. Vous pouvez modifier les fichiers à votre guise pour modifier les paramètres de l'application en fonction de vos attentes.
+Les fichiers de configuration sont des fichiers JSON. Ils sont aux nombres de trois et sont contenus dans le dossier *main/resources/* du projet. Vous pouvez modifier les fichiers à votre guise pour modifier les paramètres de l'application en fonction de vos attentes.
 
 - config.json
 - victims.json
@@ -55,6 +55,8 @@ Le .jar du projet est toujours crée dans le dossier target et peut être lancé
 >  java -jar  *smtp-1.0-SNAPSHOT-jar-with-dependencies.jar*
 
 NB : L'envoyeur et le message sont tirés au hasard dans la liste disponible.
+
+Attention : Vous devez relancé la production du .jar si vous modifiez vos fichiers de configuration. En raison de problème de compilation avec Maven/Intelliji, nous n'avons pas pu les places à l'extérieur du jar.
 
 ## Lancement avec Docker et Maven
 
