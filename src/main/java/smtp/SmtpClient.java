@@ -5,6 +5,7 @@ import mail.Message;
 import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
@@ -134,7 +135,10 @@ public class SmtpClient implements ISmtpClient {
 
             //Partie body
             writer.flush();
-            writer.write("Subject: " + message.getSubject() + "\n\n");
+            // Sans encodage base64
+            // writer.write("Subject: " + message.getSubject() + "\n\n");
+            writer.write("Subject: =?utf-8?B?" + Base64.getEncoder().encodeToString(message.getSubject().getBytes())
+                    + "?=" + "\n\n");
             LOG.info(message.getSubject());
             writer.write(message.getBody());
             LOG.info(message.getBody());
