@@ -189,3 +189,16 @@ Les lignes suivantes indiquent que la connexion a réussie
 
 ![ex2B](.\images\ex2B.JPG)
 
+
+
+
+
+### Vérification des emails
+
+1) Il vous d'abord récupérer l'adresse l'ip de votre docker qui peut se faire avec la commande inspect.
+
+### ![ex3A](.\images\ex3A.png)
+
+
+
+2) Connectez-vous avec l'adresse IP de votre docker et le port sur lequel il tourne![ex3B](C:\Users\super\switchdrive\HEIG\s4\RES\labo\smtp2\images\ex3B.png)
